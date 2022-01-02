@@ -1,0 +1,29 @@
+{
+    "name": "quadrogod/abc-cms",
+    "description": "Abc Cms",
+    "minimum-stability": "stable",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "quadrogod",
+            "email": "quadrogod@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Quadrogod\\Abc\\Cms\\": "src/"
+        }
+    },
+    "require": {
+        "quadrogod/abc-core": "*",
+        "quadrogod/abc-pages": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Quadrogod\\Abc\\Cms\\ServiceProvider"
+            ]
+        }
+    }
+}
