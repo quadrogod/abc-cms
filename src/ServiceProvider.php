@@ -2,6 +2,7 @@
 
 namespace Quadrogod\Abc\Cms;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -23,7 +24,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        // надо пропускать загрузку роутов через мидлварь ларки, иначе биндинги моделей работать не будут
+        Route::group(['middleware' => 'web'], function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        });
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'abc');
         //
         if ($this->app->runningInConsole()) {
